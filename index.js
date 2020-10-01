@@ -1,4 +1,4 @@
-function Restrain() {
+export function Restrain() {
 	let timer
 	this.debounce = (func, delay, cancel) => {
 		return new Promise((resolve, reject) => {
@@ -56,7 +56,7 @@ async function throttleTest() {
 		if(index === 100) clearInterval(interval)
 		index++
 		console.log(index)
-		const t = await throttle.run(() => {}, 1000)
+		const t = await throttle(() => {}, 1000)
 		console.log(t)
 	}, 50)
 } */

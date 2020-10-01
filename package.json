@@ -1,7 +1,7 @@
 {
-  "name": "bjork_debounce-throttle",
-  "version": "1.0.0",
-  "description": "A repository containing two classes: Dobounce and Throttle.",
+  "name": "bjork_restrain",
+  "version": "1.1.2",
+  "description": "A repository containing a function called Restain with two methods: dobounce and throttle.",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -11,8 +11,9 @@
     "url": "git+https://github.com/EmilEinarsen/bjork_debounce-throttle.git"
   },
   "keywords": [
-    "Debounce",
-    "Throttle"
+	"Restrain",
+    "debounce",
+    "throttle"
   ],
   "author": "Emil O. Einarsen",
   "license": "ISC",
