@@ -1,10 +1,10 @@
 {
   "name": "bjork_restrain",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A repository containing a function called Restain with two methods: dobounce and throttle.",
-  "main": "index.js",
+  "main": "Restrain.js",
   "scripts": {
-    "test": "jest"
+	  "doc": "jsdoc -c jsdoc.json"
   },
   "repository": {
     "type": "git",
