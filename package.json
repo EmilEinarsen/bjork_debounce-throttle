@@ -1,0 +1,23 @@
+{
+  "name": "bjork_debounce-throttle",
+  "version": "1.0.0",
+  "description": "A repository containing two classes: Dobounce and Throttle.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmilEinarsen/bjork_debounce-throttle.git"
+  },
+  "keywords": [
+    "Debounce",
+    "Throttle"
+  ],
+  "author": "Emil O. Einarsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmilEinarsen/bjork_debounce-throttle/issues"
+  },
+  "homepage": "https://github.com/EmilEinarsen/bjork_debounce-throttle#readme"
+}
