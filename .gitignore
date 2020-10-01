@@ -1,6 +1,6 @@
 node_modules
-package-lock
-package
+package-lock.json
+package.json
 docs
 .gitignore
-.README
+jsdoc.json
