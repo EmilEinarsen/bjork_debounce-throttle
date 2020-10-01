@@ -4,7 +4,7 @@ A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e
 
 
 ## Install
-Use npm to install Restrain
+Use npm to install Restrain.
 
 ```bash
 > npm i bjork_restrain
@@ -12,6 +12,7 @@ Use npm to install Restrain
 
 
 ## Usage
+In there essence, throttle creates ripples of function executions, contrasting debounce which cancels them until left idle.
 ```js
 import Restrain from 'bjork_restrain'
 const { debounce, throttle } = new Restrain()
@@ -19,7 +20,6 @@ const { debounce, throttle } = new Restrain()
 debounce(func, delay)
 throttle(func, delay)
 ```
-In there essence, throttle creates ripples of function executions, contrasting debounce which cancels them unless left idle.
 <br>
 
 ### Debounce
@@ -28,7 +28,7 @@ Delay execution of _func_ (function) until **idle** for the duration of _delay_ 
 >**Cancel** <br>
 Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting in debouncing __func__ never being executed.
 
->**Promise:** <br>
+>**Promise** <br>
 After successfully execution and cancelation, decounce resolves with a corresponding message.<br>
 
 #### Test
@@ -59,7 +59,7 @@ Restrain execution of _func_ (function) to one every _delay_ (ms).
 Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. 
 Cancels current timeout, allowing it to be replaced.
 
->**Promise:**<br>
+>**Promise**<br>
 After successfully executing a __func__, throttle resolves a message.<br>
 
 #### Test
