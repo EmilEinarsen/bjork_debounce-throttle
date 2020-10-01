@@ -23,14 +23,16 @@ In there essence, throttle creates ripples of function executions, contrasting d
 <br>
 
 ### Debounce
-Delay execution of _func_ (function) until **idle** for the _delay_ (ms).
+Delay execution of _func_ (function) until **idle** for the duration of _delay_ (ms).
 
 >**Cancel** <br>
 Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting in debouncing __func__ never being executed.
 
 >**Promise:** <br>
-After successfully execution or cancelation, debounce returns a corresponding Promise.
+After successfully execution and cancelation, decounce resolves with a corresponding message.<br>
 
+#### Test
+The test simulates a static spamming situation. For example, button spamming.
 ```js
 function debounceTest() {
 	let interval, index = 0
@@ -51,15 +53,17 @@ function debounceTest() {
 
 
 ### Throttle
-Restrain execution of _func_ (function) too one every _delay_ (ms).
+Restrain execution of _func_ (function) to one every _delay_ (ms).
 
 >**Cancel**<br>
 Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. 
 Cancels current timeout, allowing it to be replaced.
 
 >**Promise:**<br>
-After successfully executing a __func__, throttle resolves message.
+After successfully executing a __func__, throttle resolves a message.<br>
 
+#### Test
+The test simulates a static spamming situation. For example, event listing to scroll or resize.
 ```js
 async function throttleTest() {
 	let index = 0
