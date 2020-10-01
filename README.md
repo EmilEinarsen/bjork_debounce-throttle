@@ -1,13 +1,15 @@
 # What is this?
 
-A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L1) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L4) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L21). These utilizes __setInterval__ and __clearInterval__ too restrict rapide execution of a given function.
+A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L1) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L4) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L21). These utilizes __setInterval__ and __clearInterval__ too restrict rapide function execution.
+
 
 ## Install
 Use npm to install Restrain
 
 ```bash
-npm i bjork_restrain
+> npm i bjork_restrain
 ```
+
 
 ## Usage
 ```js
@@ -17,17 +19,17 @@ const { debounce, throttle } = new Restrain()
 debounce(func, delay)
 throttle(func, delay)
 ```
+In there essence, throttle creates ripples of function executions, contrasting debounce which cancels them unless left idle.
+<br>
 
-#### Debounce
+### Debounce
 Delay execution of _func_ (function) until **idle** for the _delay_ (ms).
 
->**Cancel**
-Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting in __func__ never being executed.
-***
+>**Cancel** <br>
+Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting in debouncing __func__ never being executed.
 
->**Promise:**
-After successfully function call or cancelation, debounce returns a corresponding Promise.
-***
+>**Promise:** <br>
+After successfully execution or cancelation, debounce returns a corresponding Promise.
 
 ```js
 function debounceTest() {
@@ -47,16 +49,16 @@ function debounceTest() {
 }
 ```
 
-#### Throttle
+
+### Throttle
 Restrain execution of _func_ (function) too one every _delay_ (ms).
 
->**Cancel**
-Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting __func__ being forcefully executed.
-***
+>**Cancel**<br>
+Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. 
+Cancels current timeout, allowing it to be replaced.
 
->**Promise:**
-After successfully executing __func__ or cancelation, throttle returns a corresponding Promise.
-***
+>**Promise:**<br>
+After successfully executing a __func__, throttle resolves message.
 
 ```js
 async function throttleTest() {
