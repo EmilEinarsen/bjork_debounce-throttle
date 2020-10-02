@@ -1,5 +1,5 @@
 /**
- * @type {function} Restrain
+ * @type {function}
  * @instance Contains methods for restrict rapid function execution
  * @example 
  * const { debounce, throttle } = new Restrain()
@@ -66,7 +66,7 @@ function Restrain() {
 	 * @param {number} [options.idleResetDelay = delay*1.5] - configure delay of state reset to idle
 	 * @param {number} [options.executeEvery = 0] - additonally execute **func** every **executeEvery**
 	 */
-	this.throttle = (func, delay, options) => {
+	this.throttle = (func, delay, options = {}) => {
 		const {
 			cancel = false, 
 			init = true, 

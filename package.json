@@ -1,6 +1,6 @@
 {
 	"name": "bjork_restrain",
-	"version": "1.1.74",
+	"version": "1.2.0",
 	"description": "Dobounce & Throttle - A repository containing a function, Restrain, of two methods: dobounce and throttle.",
 	"main": "index.js",
 	"scripts": {

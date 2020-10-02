@@ -1,9 +1,5 @@
 const Restrain = require('../index')
 
-
-
-
-
 function debounceTest() {
 	let interval, index = 0
 	const { debounce } = new Restrain()
