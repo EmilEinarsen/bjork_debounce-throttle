@@ -1,15 +1,18 @@
 # What is this?
 
-A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L1) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L4) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L21). These utilizes __setInterval__ and __clearInterval__ too restrict rapide execution of a given function.
+A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L1) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L4) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L21). These utilize __setInterval__ and __clearInterval__ too restrict rapid function execution.
+
 
 ## Install
-Use npm to install Restrain
+Use npm to install Restrain.
 
 ```bash
-npm i bjork_restrain
+> npm i bjork_restrain
 ```
 
+
 ## Usage
+In essence, throttle creates ripples of function executions, contrasting debounce which cancels them until left idle.
 ```js
 import Restrain from 'bjork_restrain'
 const { debounce, throttle } = new Restrain()
@@ -17,18 +20,19 @@ const { debounce, throttle } = new Restrain()
 debounce(func, delay)
 throttle(func, delay)
 ```
+<br>
 
-#### Debounce
-Delay execution of _func_ (function) until **idle** for the _delay_ (ms).
+### Debounce
+Delay execution of _func_ (function) until **idle** for the duration of _delay_ (ms).
 
->**Cancel**
-Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting in __func__ never being executed.
-***
+>**Cancel** <br>
+In addition to __func__ and __delay__ a third param, __cancel__ (bool), can be passed. Resulting in debouncing __func__ never being executed.
 
->**Promise:**
-After successfully function call or cancelation, debounce returns a corresponding Promise.
-***
+>**Promise** <br>
+After successfully execution or cancelation, decounce resolves with a corresponding message.<br>
 
+#### Test
+Simulates a static spamming situation. For example, button spamming.
 ```js
 function debounceTest() {
 	let interval, index = 0
@@ -47,17 +51,19 @@ function debounceTest() {
 }
 ```
 
-#### Throttle
-Restrain execution of _func_ (function) too one every _delay_ (ms).
 
->**Cancel**
-Inaddition to __func__ and __delay__ a third param, __cancel__ (bool), can be pased. Resulting __func__ being forcefully executed.
-***
+### Throttle
+Restrain execution of _func_ (function) to one every _delay_ (ms).
 
->**Promise:**
-After successfully executing __func__ or cancelation, throttle returns a corresponding Promise.
-***
+>**Cancel**<br>
+In addition to __func__ and __delay__ a third param, __cancel__ (bool), can be passed. 
+Effectivly, canceling current timeout, allowing it to be replaced.
 
+>**Promise**<br>
+After successfully executing __func__, throttle resolves with a message.<br>
+
+#### Test
+Simulates a static spamming situation. For example, event listing to scroll or resize.
 ```js
 async function throttleTest() {
 	let index = 0
