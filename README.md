@@ -1,6 +1,6 @@
 # What is this?
 
-A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L1) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L4) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/330d8e45f9078e65e4f1c62e4d743c591670a583/Restrain.js#L21). These utilize __setInterval__ and __clearInterval__ too restrict rapid function execution.
+A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/8e47c78740a12f55ff2d173f6fb58c9ceb00a1cb/index.js#L9) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/8e47c78740a12f55ff2d173f6fb58c9ceb00a1cb/index.js#L23) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/8e47c78740a12f55ff2d173f6fb58c9ceb00a1cb/index.js#L52). These utilize __setInterval__ and __clearInterval__ too restrict rapid function execution.
 
 
 ## Install
