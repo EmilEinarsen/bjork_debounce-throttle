@@ -6,7 +6,7 @@
  * debounce(func, delay, cancel)
  * throttle(func, delay, cancel)
  */
-export default function Restrain() {
+function Restrain() {
 
 	/**
 	 * Holds debouncers Timeout
@@ -70,3 +70,5 @@ export default function Restrain() {
 		})
 	}
 }
+
+module.exports = Restrain
