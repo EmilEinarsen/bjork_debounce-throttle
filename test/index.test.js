@@ -1,9 +1,7 @@
 const Restrain = require('../index')
 
 
-test('Tested Restrain', () => {
-	expect('').toBe('')
-})
+
 
 
 function debounceTest() {

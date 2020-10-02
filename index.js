@@ -37,54 +37,73 @@ function Restrain() {
 		})
 	}
 
+	
 	/**
-	 * Holds throttle Timeout
+	 * Stores timeout
 	 * @property {number} throttleTimer
 	 */
 	let throttleTimer
-	let firstCall = true
-	let counter = 0
 	/**
-	 * Optional params for additional configuration of throttling
-	 * @typedef {Object} Options
-	 * @property {boolean} [cancel]
-	 * @property {boolean} [init]
-	 * @property {number} [executeOnCount]
+	 * Has throttle been idle?
+	 * @property {boolean} idle 
+	 * @default true
 	 */
+	let isIdle = true
+	/**
+	 * Tracks function iterations
+	 * @property {number} counter
+	 * @default 0
+	 */
+	let counter = 0
 	/**
 	 * Restrain execution of **func** too one every duration of **delay**
 	 * @function throttle
 	 * @param {function} func - callback function
 	 * @param {number} delay - ms
-	 * @param {Options} options
+	 * @param {Object} [options] - optional params for additional configuration
+	 * @param {boolean} [options.cancel = false] - cancels current throttle
+	 * @param {boolean} [options.init = true] - toggles initial execute
+	 * @param {number} [options.idleResetDelay = delay*1.5] - configure delay of state reset to idle
+	 * @param {number} [options.executeEvery = 0] - additonally execute **func** every **executeEvery**
 	 */
-	this.throttle = (func, delay, options = {cancel = false, init = true, executeOnCount = 0} = {}) => {
-		let {cancel, init, executeOnCount} = options
+	this.throttle = (func, delay, options) => {
+		const {
+			cancel = false, 
+			init = true, 
+			idleResetDelay = delay*1.5,
+			executeEvery = 0
+		} = options
 		return new Promise((resolve) => {
 			
-			if(firstCall && init) {
-				func()
-				firstCall = false
+			// initial execution
+			if(init) {
+				if(isIdle) {
+					func()
+					isIdle = false
+				}
+				// reset **isIdle** when idle
+				this.debounce(() => isIdle = true, idleResetDelay)
 			}
-			if(init) this.debounce(() => firstCall = true, delay*1.5)
 
+			// additionally execute function 
+			// every **executeEvery**:nth iteration
 			counter++
-			if(executeOnCount === counter) {
+			if(executeEvery === counter) {
 				func()
 				counter = 0
 				resolve('function executed')
 			}
 
-			// cancels current timeout, allowing a new timeout to replace it
+			// allows param exchange during throttle
 			if(cancel) {
 				clearTimeout(throttleTimer)
 				throttleTimer = undefined
 			}
 
-			// returns if throttleTimer contains a ticking func execution
+			// stops additional func executions during a timeout
 			if(throttleTimer) return
 
-			// starts a timeout to execute func after delay
+			// saving timeout, which allows throttle behaviour  
 			throttleTimer = setTimeout(() => {
 				func()
 				throttleTimer = undefined
@@ -92,25 +111,6 @@ function Restrain() {
 			}, delay)
 		})
 	}
-}
-
-throttleTest()
-async function throttleTest() {
-	let index = 0
-	let interval
-	const { throttle } = new Restrain()
-
-	interval = setInterval(async() => {
-		if(index === 20) clearInterval(interval)
-		console.log(index++)
-
-		/**
-		 * After delayed-duration, execute given function
-		 */
-		throttle(() => console.log('execution'), 1000, {executeOnCount: 7})
-	}, 200)
-
-	setTimeout(() => throttleTest(), 10000)
 }
 
 module.exports = Restrain
