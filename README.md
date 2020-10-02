@@ -18,15 +18,15 @@ import Restrain from 'bjork_restrain'
 const { debounce, throttle } = new Restrain()
 
 debounce(func, delay)
-throttle(func, delay)
+throttle(func, delay, options?)
 ```
 <br>
 
 ### Debounce
-Delay execution of _func_ (function) until **idle** for the duration of _delay_ (ms).
+Delay execution of _func_ [function] until **idle** for the duration of _delay_ [number](ms).
 
 >**Cancel** <br>
-In addition to __func__ and __delay__ a third param, __cancel__ (bool), can be passed. Resulting in debouncing __func__ never being executed.
+In addition to __func__ and __delay__ a third param, __cancel__ [boolean], can be passed. Resulting in debouncing __func__ never being executed.
 
 >**Promise** <br>
 After successful execution or cancelation, debounce resolves with a corresponding message.<br>
@@ -53,14 +53,21 @@ function debounceTest() {
 
 
 ### Throttle
-Restrain execution of _func_ (function) to one every _delay_ (ms).
-
->**Cancel**<br>
-In addition to __func__ and __delay__ a third param, __cancel__ (bool), can be passed. 
-Effectively, canceling the current timeout, allowing swapping of __func__ and __delay__.
+Restrain execution of _func_ [function] to one every _delay_ [number](ms).
 
 >**Promise**<br>
 After successfully executing __func__, throttle resolves with a message.<br>
+
+> **Options**<br>
+> In addition to __func__ and __delay__ a third param, __options__ [object], can be passed. <br>
+	options?: { cancel?: boolean; init?: boolean; idleResetDelay?: number; executeEvery?: number; }
+> * cancel [bool]: 
+Cancels current timeout, allowing param exchange of throttle.
+> * init [bool]: 
+Toggles initial execution (@default true).
+> * idleResetDelay [number]: 
+configure delay of state reset to idle (@defualt **delay***1.5)
+> * executeEvery [number]: additonally execute **func** every **executeEvery**. (@default 0 | false)
 
 #### Test
 Simulates a static spamming situation. For example, event listing to scroll or resize.
