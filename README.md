@@ -29,7 +29,7 @@ Delay execution of _func_ (function) until **idle** for the duration of _delay_ 
 In addition to __func__ and __delay__ a third param, __cancel__ (bool), can be passed. Resulting in debouncing __func__ never being executed.
 
 >**Promise** <br>
-After successfully execution or cancelation, decounce resolves with a corresponding message.<br>
+After successful execution or cancelation, debounce resolves with a corresponding message.<br>
 
 #### Test
 Simulates a static spamming situation. For example, button spamming.
@@ -57,7 +57,7 @@ Restrain execution of _func_ (function) to one every _delay_ (ms).
 
 >**Cancel**<br>
 In addition to __func__ and __delay__ a third param, __cancel__ (bool), can be passed. 
-Effectivly, canceling current timeout, allowing it to be replaced.
+Effectively, canceling the current timeout, allowing swapping of __func__ and __delay__.
 
 >**Promise**<br>
 After successfully executing __func__, throttle resolves with a message.<br>
@@ -82,10 +82,10 @@ async function throttleTest() {
 }
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+## Contribution
+Pull requests are welcome. For any considerable changes, please open an issue first to discuss what you would like to change.<br>
 <br>
-Please make sure to update tests as appropriate.
+Please make sure to update the tests as appropriate.
 
 ## Licence
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/EmilEinarsen/bjork_restrain/blob/master/LICENSE)
