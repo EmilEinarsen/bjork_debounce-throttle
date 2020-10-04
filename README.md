@@ -21,6 +21,16 @@ const { debounce, throttle, iteration } = restrain
 debounce(func, delay, cancel)
 throttle(func, delay, options?)
 iteration(func, delay, options?)
+
+//---------- or ----------\\
+
+// (for example, debounce)
+
+import Debounce from 'bjork_restrain/modules/Debounce'
+
+const debounce = (new Debounce()).process
+
+debounce(func, delay, cancel)
 ```
 <br>
 
