@@ -3,3 +3,4 @@ docs
 jsdoc.json
 .gitignore
 package-lock.json
+test
