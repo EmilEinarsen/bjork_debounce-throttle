@@ -2,10 +2,11 @@ const Debounce = require('./Debounce')
 
 /**
  * Restrain execution of given function to one every set delay
- * @param {function} Throttle
+ * @function Throttle
  * @method process - Main process or logic
  */
 function Throttle() {
+	
 	/**
 	 * Tracks timeout
 	 * @property {number} timeout

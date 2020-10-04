@@ -5,6 +5,7 @@
  * @method process - Main process or logic
  */
 function Debounce() {
+	
 	/**
 	 * Tracks timeout
 	 * @property {number} timeout

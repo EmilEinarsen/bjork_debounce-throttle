@@ -2,7 +2,7 @@ const Debounce = require('./Debounce')
 
 /**
  * Restrain execution of given function to every set iteration
- * @param {function} Iteration
+ * @function Iteration
  * @method process - Main process or logic
  */
 function Iteration() {
