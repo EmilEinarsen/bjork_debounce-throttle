@@ -1,10 +1,10 @@
 # What is this?
 
-A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L9) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L23) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L69). These utilize [__setTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) and [__clearTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout) too restrict rapid function execution.
+A object [restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/index.js#L14) containing three restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Debounce.js#L7), [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Throttle.js#L8) and [Iteration](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Iteration.js#L8). Debounce and Throttle utilize [__setTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) and [__clearTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout) too restrict rapid function execution.
 
 
 ## Install
-Use npm to install Restrain.
+Use npm to install restrain.
 
 ```bash
 > npm i bjork_restrain
@@ -13,12 +13,14 @@ Use npm to install Restrain.
 
 ## Usage
 In essence, throttle creates ripples of function executions, contrasting debounce which cancels them until left idle.
+Additionally, Iteration count and executes on every given number.
 ```js
-import Restrain from 'bjork_restrain'
-const { debounce, throttle } = new Restrain()
+import restrain from 'bjork_restrain'
+const { debounce, throttle, iteration } = restrain
 
-debounce(func, delay)
+debounce(func, delay, cancel)
 throttle(func, delay, options?)
+iteration(func, delay, options?)
 ```
 <br>
 
@@ -26,29 +28,22 @@ throttle(func, delay, options?)
 Delay execution of __func__ [function] until _idle_ for the duration of __delay__ [number] (ms).
 
 >**Cancel** <br>
-In addition to __func__ and __delay__ a third param, __cancel__ [boolean], can be passed. Resulting in debouncing __func__ never being executed.
+In addition to __func__ and __delay__ a third param, __cancel__ [boolean], can be passed. Resulting in the debouncing function __func__ never being executed.
 
 >**Promise** <br>
-After successful execution or cancelation, debounce resolves with a corresponding message.<br>
+After a successful execution or cancelation, debounce resolves with a corresponding message.<br>
 
 #### Test
-Simulates a static spamming situation. For example, button spamming.
+The testEnvironment simulates a static spamming situation. Here is the test [intact](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/test/Debounce.test.js#L3).
 ```js
-function debounceTest() {
-	let interval, index = 0
-	const { debounce } = new Restrain()
-
-	interval = setInterval(async() => {
-		console.log(index++)
-
-		/**
-		 * After not being called for delayed-duration, execute given function
-		 */
-		debounce(() => console.log('first execution'), 1000 )
-
-		if(index === 20) clearInterval(interval)
-	}, 100)
-}
+// In testEnvironment: debounce(() => arr.push('execution'), 15)
+test('unconfigured', async() => {
+	expect(
+		await testEnvironment()
+	).toBe(
+		'1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 execution'
+	)
+})
 ```
 
 
@@ -59,34 +54,56 @@ Restrain execution of __func__ [function] to one every __delay__ [number] (ms).
 After successfully executing __func__, throttle resolves with a message.<br>
 
 > **Options**<br>
-> In addition to __func__ and __delay__ a third param, __options__ [object], can be passed. <br>
-	options?: { cancel?: boolean; init?: boolean; idleResetDelay?: number; executeEvery?: number; }
-> * cancel [boolean]: 
+> In addition to __func__ and __delay__ a third param, __options__ [object], can be passed. <br><br>
+	options?: { cancel?: boolean; init?: boolean; idleResetDelay?: number; }<br>
+> * cancel [boolean]: <br>
 Cancels current timeout, allowing param exchange of throttle.
-> * init [boolean]: 
+> * init [boolean]: <br>
 Toggles initial execution (@default true).
-> * idleResetDelay [number]: 
-configure delay of state reset to idle (@defualt **delay***1.5)
-> * executeEvery [number]: additonally execute **func** every **executeEvery**. (@default 0 | false)
+> * idleResetDelay [number] (ms): <br>
+Configure delay of state reset to idle (@defualt **delay***1.5)
 
 #### Test
-Simulates a static spamming situation. For example, event listing to scroll or resize.
+The testEnvironment simulates a static spamming situation. Here is the test [intact](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/test/Throttle.test.js#L3).
 ```js
-async function throttleTest() {
-	let index = 0
-	let interval
-	const { throttle } = new Restrain()
+test('unconfigured', async() => {
+	expect(
+		await testEnvironment()
+	).toBe(
+		'1 execution 2 3 4 5 6 7 8 9 10 11 12 13 14 execution 15 16 17 18 19 20 21 22 23 24 25 26 27 28 execution 29 30'
+	)
+})
+```
 
-	interval = setInterval(async() => {
-		if(index === 20) clearInterval(interval)
-		console.log(index++)
 
-		/**
-		 * After delayed-duration, execute given function
-		 */
-		throttle(() => console.log('execution'), 1000)
-	}, 200)
-}
+### Iteration
+Restrain execution of __func__ [function] to every __delay__:nth [number] iteration.
+
+>**Promise**<br>
+After successfully executing __func__, iteration resolves with a message.<br>
+
+> **Options**<br>
+> In addition to __func__ and __delay__ a third param, __options__ [object], can be passed. <br><br>
+	options?: { cancel?: boolean; init?: boolean; startFrom?: number; idleResetDelay?: number; }<br>
+> * cancel [boolean]: <br>
+Cancels current iteration count, effectivly reseting iteration.
+> * init [boolean]: <br>
+Toggles initial execution (@default true).
+> * startFrom [number]: <br>
+Configure initial starting iteration (@defualt 0)
+> * idleResetDelay [number] (ms): <br>
+Configure delay of state reset to idle (@defualt 500ms)
+
+#### Test
+The testEnvironment simulates a static spamming situation. Here is the test [intact](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/test/Iteration.test.js#L3).
+```js
+test('unconfigured', async() => {
+	expect(
+		await testEnvironment()
+	).toBe(
+		'1 execution 2 3 4 5 execution 6 7 8 9 10 execution 11 12 13 14 15 execution 16 17 18 19 20 execution'
+	)
+})
 ```
 
 ## Contribution
