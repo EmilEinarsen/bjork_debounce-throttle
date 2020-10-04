@@ -61,9 +61,9 @@ After successfully executing __func__, throttle resolves with a message.<br>
 > **Options**<br>
 > In addition to __func__ and __delay__ a third param, __options__ [object], can be passed. <br>
 	options?: { cancel?: boolean; init?: boolean; idleResetDelay?: number; executeEvery?: number; }
-> * cancel [bool]: 
+> * cancel [boolean]: 
 Cancels current timeout, allowing param exchange of throttle.
-> * init [bool]: 
+> * init [boolean]: 
 Toggles initial execution (@default true).
 > * idleResetDelay [number]: 
 configure delay of state reset to idle (@defualt **delay***1.5)
