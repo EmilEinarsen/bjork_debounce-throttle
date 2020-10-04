@@ -1,6 +1,6 @@
 # What is this?
 
-A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L9) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L23) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L69). These utilize __setInterval__ and __clearInterval__ too restrict rapid function execution.
+A function [Restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L9) containing two restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L23) and [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/97f6774e62d622548cb8746dcf0303abb30d227f/index.js#L69). These utilize [__setTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) and [__clearTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout) too restrict rapid function execution.
 
 
 ## Install
@@ -23,7 +23,7 @@ throttle(func, delay, options?)
 <br>
 
 ### Debounce
-Delay execution of _func_ [function] until **idle** for the duration of _delay_ [number] (ms).
+Delay execution of __func__ [function] until _idle_ for the duration of __delay__ [number] (ms).
 
 >**Cancel** <br>
 In addition to __func__ and __delay__ a third param, __cancel__ [boolean], can be passed. Resulting in debouncing __func__ never being executed.
@@ -53,7 +53,7 @@ function debounceTest() {
 
 
 ### Throttle
-Restrain execution of _func_ [function] to one every _delay_ [number] (ms).
+Restrain execution of __func__ [function] to one every __delay__ [number] (ms).
 
 >**Promise**<br>
 After successfully executing __func__, throttle resolves with a message.<br>
