@@ -2,7 +2,7 @@ const Debounce = require('./Debounce')
 
 /**
  * Restrain execution of given function to one every set delay
- * @function Throttle
+ * @param {function} Throttle
  * @method process - Main process or logic
  */
 function Throttle() {

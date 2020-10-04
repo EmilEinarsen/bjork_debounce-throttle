@@ -11,7 +11,7 @@ const Iteration = require('./modules/Iteration')
  * throttle(func, delay, options)
  * Iteration(func, delay, options)
  */
-const Restrain = {
+const restrain = {
 
 	debounce: (new Debounce()).process,
 	throttle: (new Throttle()).process,
@@ -19,4 +19,4 @@ const Restrain = {
 
 }
 
-module.exports = Restrain
+module.exports = restrain

@@ -1,6 +1,11 @@
 {
 	"source": {
-	  "include": ["index.js"]
+	  "include": [
+		  "index.js",
+		  "modules/Debounce.js",
+		  "modules/Throttle.js",
+		  "modules/Iteration.js"
+		]
 	},
 	"plugins": ["plugins/markdown"],
 	"templates": {
