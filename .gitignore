@@ -1,5 +1,3 @@
 node_modules
 jsdoc.json
-.gitignore
 package-lock.json
-.npmignore

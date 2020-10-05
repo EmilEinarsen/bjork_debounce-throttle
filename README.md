@@ -1,6 +1,6 @@
 # What is this?
 
-A object [restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/index.js#L14) containing three restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Debounce.js#L7), [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Throttle.js#L8) and [iteration](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Iteration.js#L8). Debounce and Throttle utilize [__setTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) and [__clearTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout) too restrict rapid function execution.
+An object, [restrain](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/index.js#L14), containing three restrictive Promise-based functions: [debounce](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Debounce.js#L7), [throttle](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Throttle.js#L8) and [iteration](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/modules/Iteration.js#L8). Debounce and Throttle utilize [__setTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) and [__clearTimeout__](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout) too restrict rapid function execution.
 
 
 ## Install
@@ -35,7 +35,7 @@ debounce(func, delay, cancel)
 <br>
 
 ### Debounce
-Delay execution of __func__ [function] until _idle_ for the duration of __delay__ [number] (ms).
+Delay execution of __func__ until _idle_ for the duration of __delay__ (ms).
 
 >**Cancel** <br>
 In addition to __func__ and __delay__ a third param, __cancel__ [boolean], can be passed. Resulting in the debouncing function __func__ never being executed.
@@ -58,7 +58,7 @@ test('unconfigured', async() => {
 
 
 ### Throttle
-Restrain execution of __func__ [function] to one every __delay__ [number] (ms).
+Restrain execution of __func__ to one every __delay__ (ms).
 
 >**Promise**<br>
 After successfully executing __func__, throttle resolves with a message.<br>
@@ -70,7 +70,7 @@ After successfully executing __func__, throttle resolves with a message.<br>
 Cancels current timeout, allowing param exchange of throttle.
 > * init [boolean]: <br>
 Toggles initial execution (@default true).
-> * idleResetDelay [number] (ms): <br>
+> * idleResetDelay (ms): <br>
 Configure delay of state reset to idle (@defualt **delay***1.5)
 
 #### Test
@@ -87,7 +87,7 @@ test('unconfigured', async() => {
 
 
 ### Iteration
-Restrain execution of __func__ [function] to every __delay__:nth [number] iteration.
+Restrain execution of __func__ to every __delay__:nth iteration.
 
 >**Promise**<br>
 After successfully executing __func__, iteration resolves with a message.<br>
@@ -101,8 +101,8 @@ Cancels current iteration count, effectivly reseting iteration.
 Toggles initial execution (@default true).
 > * startFrom [number]: <br>
 Configure initial starting iteration (@defualt 0)
-> * idleResetDelay [number] (ms): <br>
-Configure delay of state reset to idle (@defualt 500ms)
+> * idleResetDelay (ms): <br>
+Configure delay of state reset to idle (@defualt 500)
 
 #### Test
 The testEnvironment simulates a static spamming situation. Here is the test [intact](https://github.com/EmilEinarsen/bjork_restrain/blob/3c088b1caeabb2b16a86a689973d350c19cc3ede/test/Iteration.test.js#L3).
