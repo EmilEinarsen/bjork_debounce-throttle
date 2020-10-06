@@ -45,10 +45,7 @@ function Throttle() {
 
 			// initial execution
 			if(init) {
-				if(isIdle) {
-					executeFunc()
-					console.log('isIdle')
-				}
+				if(isIdle) executeFunc()
 
 				// resets throttle and **isIdle** opon being idle
 				debounce(() => {
