@@ -3,7 +3,10 @@ const Throttle = require('./modules/Throttle')
 const Iteration = require('./modules/Iteration')
 
 /**
- * @type {function}
+ * @object restrain
+ * @property {function} debounce
+ * @property {function} throttle
+ * @property {function}	iteration
  * @instance Contains methods for restrict rapid function execution
  * @example 
  * const { debounce, throttle, Iteration } = new Restrain()

@@ -1,6 +1,6 @@
 {
 	"name": "bjork_restrain",
-	"version": "2.0.11",
+	"version": "2.0.12",
 	"description": "Dobounce, Throttle & Iteration - A repository containing an object, Restrain, holding three instances: dobounce, throttle and iteration.",
 	"main": "index.js",
 	"scripts": {
