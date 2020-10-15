@@ -1,6 +1,7 @@
 const Debounce = require('./modules/Debounce')
 const Throttle = require('./modules/Throttle')
 const Iteration = require('./modules/Iteration')
+const StandBy = require('./modules/StandBy')
 
 /**
  * @object restrain
@@ -19,6 +20,7 @@ const restrain = {
 	debounce: (new Debounce()).process,
 	throttle: (new Throttle()).process,
 	iteration: (new Iteration()).process,
+	standBy: (new StandBy()),
 
 }
 
